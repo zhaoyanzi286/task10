@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="zuoye.css">
+    </head>
+    <body>
+    	<div class="header">
+    		<div class="container clear">
+    			<p class="logo">新闻天下</p>
+    			<ul class="nav clear">
+    				<li><a href="#">首页</a></li>
+    				<li><a href="#" target="_blank">要闻</a></li>
+    				<li><a href="#" target="_blank">历史浏览</a></li>
+    			</ul>
+    		    <form class="form">
+					<input type="button" class="submit clear" />
+					<input type="text" placeholder="输入关键词" class="search clear" >
+				</form>
+				<div id="operater">
+					<span id="login">登录&nbsp;</span><span id="register">&nbsp;注册</span>
+					<a href="#" target="_blank" id="personal">个人中心</a>
+				</div>
+    		</div>
+		</div>
+		<form id="boundary">
+			<div class="text1">
+				<span class="txt">用 户 名 </span>
+				<input type="text" class="sheet" id="username" />
+			</div>
+			<p id="tip1"></p>
+			<div class="text2">
+				<span class="txt">设置密码</span>
+				<input type="password" class="sheet" id="password" />
+			</div>
+			<p id="tip2"></p>
+			<button type="button" id="btn"></button>
+		</form>
+    	<div class="banner">
+			<a href="#" target="_blank"><img src="./imgs/banner1.png" id="imgList"></a>
+    	</div>
+    	<div class="nav1 clear">
+    		<ul class="bar clear">
+    			<li><a href="#" target="_blank">娱乐</a></li>
+    			<li><a href="#" target="_blank">军事</a></li>
+    			<li><a href="#" target="_blank">体育</a></li>
+    			<li><a href="#" target="_blank">财经</a></li>
+    			<li><a href="#" target="_blank">时尚</a></li>
+    			<li><a href="#" target="_blank">汽车</a></li>
+    			<li><a href="#" target="_blank">星座</a></li>
+    			<li><a href="#" target="_blank">旅游</a></li>
+    			<li><a href="#" target="_blank">教育</a></li>
+    			<li class="none"><a href="#" target="_blank">游戏</a></li>
+    			<li class="guess"><a href="#" target="_blank">猜你喜欢</a></li>
+    		</ul>
+    	</div>
+    	<div class="column">
+    		<div class="title">
+    		    <h1>今日看点</h1>
+    		</div>
+    		<div class="today clear">
+    			<ul class="news clear">
+    				<li class="new">
+						<a href="#" target="_blank">
+							<img src="./imgs/news1.png" alt='10907米 "海斗一号"完成万米测试'>
+						</a>
+						<a href="#" target="_blank"><span class="message">10907米!"海斗一号"完成万米测试</span></a>
+					</li>
+    				<li class="new">
+						<a href="#" target="_blank">
+							<img src="./imgs/news2.png" alt="赞！中国天眼正式开启地外文明搜索">	
+						</a>
+						<a href="#" target="_blank"><span class="message">赞！中国天眼正式开启地外文明搜索</span></a>
+					</li>
+    				<li class="new">
+						<a href="#" target="_blank">
+							<img src="./imgs/news3.png" alt="华为6G有新消息 副总裁透露预研方向">	
+						</a>
+						<a href="#" target="_blank"><span class="message">华为6G有新消息 副总裁透露预研方向</span></a>
+					</li>
+    				<li class="new">
+						<a href="#" target="_blank">
+							<img src="./imgs/news4.png" alt="测量登山队成功登顶 攀登珠峰，究竟有多难？">	
+						</a>
+						<a href="#" target="_blank"><span class="message">测量登山队成功登顶 攀登珠峰，究竟有多难？</span></a>
+					</li>
+    			</ul>
+    		</div>
+		</div>
+		<div id="up">
+			<img src="./imgs/up.png" >
+		</div>
+    	<div class="footer">
+    		Copyright©zhaoyanzi286
+    	</div>
+	</body>
+	<script>
+		var up = document.getElementById("up");
+		window.onscroll = function() {
+			var header = document.getElementsByClassName("header");
+			var _scroll = document.body.scrollTop || document.documentElement.scrollTop;
+			if(_scroll > 0) {
+				header[0].style.position = "fixed";
+				header[0].style.top = 0;
+				up.style.display = "inline-block";
+			}else{
+				header[0].style.position = "relative";
+				up.style.display = "none";
+			} 
+		}
+		up.onclick = function() {
+			document.body.scrollTop = document.documentElement.scrollTop = 0;
+		}
+		var i = 0;
+		var timerId = setInterval(function() {
+			var imgList = document.getElementById("imgList");
+			imgList.removeAttribute("src");
+			imgList.setAttribute("src","./imgs/banner" + i + ".png");
+			i++;
+			if(i == 3) {
+				i = 0;
+			}
+		},1500);
+		var login = document.getElementById("login");
+		var register = document.getElementById("register");
+		var boundary = document.getElementById("boundary");
+		var btn = document.getElementById("btn");
+		login.onmouseover = function() {
+			login.style.color = "orange";
+		}
+		login.onmouseout = function() {
+			login.style.color = "rgba(102,102,102,1)";
+		}
+		register.onmouseover = function() {
+			register.style.color = "orange";
+		}
+		register.onmouseout = function() {
+			register.style.color = "rgba(102,102,102,1)";
+		}
+		login.onclick = function() {
+			boundary.style.display = "block";
+			btn.innerHTML = "";
+			btn.innerHTML = "立即登录";
+		}
+		register.onclick = function() {
+			boundary.style.display = "block";
+			btn.innerHTML = "";
+			btn.innerHTML = "立即注册";
+		}
+		var username = document.getElementById("username");
+		var password = document.getElementById("password");
+		var tip1 = document.getElementById("tip1");
+		var tip2 = document.getElementById("tip2");
+		var personal = document.getElementById("personal");
+		username.onfocus = function() {
+			tip1.innerText = "支持中文数字";
+		}
+		username.onblur = function() {
+			if(username.value == ""){
+				tip1.innerText = "用户名不能为空";
+			}else{
+				tip1.innerText = "";
+			}
+		}
+		password.onfocus = function() {
+			tip2.innerText = "建议至少使用两种字符组合";
+		}
+		password.onblur = function() {
+			if(username.value == ""){
+				tip2.innerText = "密码不能为空";
+			}else{
+				tip2.innerText = "";
+			} 
+		}
+		btn.onclick = function() {
+			boundary.style.display = "none";
+			login.style.display = "none";
+			register.style.display = "none";
+			personal.style.display = "inline";
+		}
+	</script>
+</html>
